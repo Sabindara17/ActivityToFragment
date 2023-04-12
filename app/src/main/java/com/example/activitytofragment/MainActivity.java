@@ -1,6 +1,8 @@
 package com.example.activitytofragment;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.View;
@@ -8,30 +10,28 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
-    EditText txt;
     Button btn;
-    String value;
-
-
+    One fragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if(savedInstanceState==null){
-            Bundle bun=new Bundle();
-            bun.putString("key",value);
-            getSupportFragmentManager().beginTransaction().add(R.id.fragment_fg,One.class,bun).commit();
+         fragment = new One();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_fg, fragment)
+                .commit();
 
-        }
-        txt=findViewById(R.id.fragment_et);
-        btn=findViewById(R.id.fragment_abtn);
+        btn= findViewById(R.id.fragment_abtn);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                value= txt.getText().toString();
+            public void onClick(View v) {
+                EditText editText = findViewById(R.id.fragment_et);
+                String text = editText.getText().toString();
+                fragment.updateText(text);
 
             }
         });
+
     }
 
 
