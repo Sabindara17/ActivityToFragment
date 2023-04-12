@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="HELLO"
+        android:textColorHint="@color/black"
+
+        android:textColor="@color/black"
+
+        android:id="@+id/fragment_et"
+        ></EditText>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Activity Button"
+        android:id="@+id/fragment_abtn"
+        android:layout_below="@+id/fragment_et"
+        ></Button>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        tools:layout="@layout/fragment_one"
+        android:id="@+id/fragment_fg"
+        android:layout_below="@+id/fragment_abtn"
+        ></androidx.fragment.app.FragmentContainerView>
+
+</RelativeLayout>
