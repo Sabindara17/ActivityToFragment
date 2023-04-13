@@ -13,17 +13,21 @@ import android.widget.TextView;
 public class One extends Fragment {
     String d;
     TextView txt;
+    View v;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v= inflater.inflate(R.layout.fragment_one, container, false);
-        d=getArguments().getString("key");
+        v= inflater.inflate(R.layout.fragment_one, container, false);
+
         txt=v.findViewById(R.id.fragment_tv);
-        txt.setText(d);
+
     return v;
+    }
+    public void getData(String data){
+        txt.setText(data);
     }
 
 }
