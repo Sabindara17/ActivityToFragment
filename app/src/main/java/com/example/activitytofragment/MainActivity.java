@@ -66,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
                         return false;
                     }
                 });
+
+
             }
         });
 
@@ -73,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DialogFragment dialogFragment = new com.example.activitytofragment.DialogFragment();
-                dialogFragment.show(getSupportFragmentManager(), "MyDialogFragment");
+                dialogFragment.show(getSupportFragmentManager(), "d");
             }
         });
 
