@@ -22,11 +22,15 @@ public class RecyclerViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recycler_view);
         recyclerView = findViewById(R.id.rc_view);
         ///
-        populateData();
         ///
-        recyclerViewAdapter= new RecyclerViewAdapter(dataModels);
+        populateData();
 
-        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
+        recyclerViewAdapter= new RecyclerViewAdapter(dataModels);
+//        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
+
         recyclerView.setAdapter(recyclerViewAdapter);
 
     }
@@ -37,6 +41,14 @@ public class RecyclerViewActivity extends AppCompatActivity {
         dataModels.add(new DataModel("Text 3",R.drawable.ic_launcher_background));
         dataModels.add(new DataModel("Text 4",R.drawable.ic_launcher_background));
         dataModels.add(new DataModel("Text 5",R.drawable.ic_launcher_background));
+        dataModels.add(new DataModel("Text 6",R.drawable.ic_launcher_background));
+        dataModels.add(new DataModel("Text 6",R.drawable.ic_launcher_background));
+        dataModels.add(new DataModel("Text 6",R.drawable.ic_launcher_background));
+        dataModels.add(new DataModel("Text 6",R.drawable.ic_launcher_background));
+        dataModels.add(new DataModel("Text 6",R.drawable.ic_launcher_background));
+        dataModels.add(new DataModel("Text 6",R.drawable.ic_launcher_background));
+        dataModels.add(new DataModel("Text 6",R.drawable.ic_launcher_background));
+        dataModels.add(new DataModel("Text 6",R.drawable.ic_launcher_background));
         dataModels.add(new DataModel("Text 6",R.drawable.ic_launcher_background));
     }
 }

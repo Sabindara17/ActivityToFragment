@@ -42,12 +42,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView mTextView;
+        private TextView mTextView;
         public ImageView mImageView;
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            mTextView= itemView.findViewById(R.id.rc_item_tv);
-            mImageView= itemView.findViewById(R.id.rc_item_iv);
+        public ViewHolder(@NonNull View view) {
+            super(view);
+            mTextView= view.findViewById(R.id.rc_item_tv);
+            mImageView= view.findViewById(R.id.rc_item_iv);
         }
+
+
+
+
     }
 }
