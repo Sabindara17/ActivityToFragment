@@ -7,12 +7,17 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="SQLITE EXAMPLE"
         android:supportsRtl="true"
         android:theme="@style/Theme.ActivityToFragment"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".AddActivity"
+            android:label="Add Items"
+            android:parentActivityName=".MainActivitySql"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivitySql"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
