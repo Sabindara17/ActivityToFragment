@@ -12,10 +12,13 @@
         android:theme="@style/Theme.ActivityToFragment"
         tools:targetApi="31">
         <activity
-            android:name=".AddActivity"
-            android:label="Add Items"
-            android:parentActivityName=".MainActivitySql"
+            android:name=".UpdateActivity"
             android:exported="false" />
+        <activity
+            android:name=".AddActivity"
+            android:exported="false"
+            android:label="Add Items"
+            android:parentActivityName=".MainActivitySql" />
         <activity
             android:name=".MainActivitySql"
             android:exported="true">

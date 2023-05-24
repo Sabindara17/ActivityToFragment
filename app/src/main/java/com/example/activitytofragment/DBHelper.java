@@ -23,12 +23,12 @@ public class DBHelper extends SQLiteOpenHelper {
     static final String USER_NAME = "user_name";
     static final String USER_PASSWORD = "user_password";
 
-
     private static final String DB_QUERY_CREATE = "CREATE TABLE " + DB_TABLE + " (" + USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + USER_NAME + " TEXT, " + USER_PASSWORD + " TEXT);";
 
+   
 
     public DBHelper(@Nullable Context context) {
-        super(context, DB_NAME, null, DB_VERSION);
+        super(context,DB_NAME,null,DB_VERSION);
         this.context = context;
     }
 
@@ -42,8 +42,26 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + DB_TABLE);
 
     }
+
+
+    void insertData(String uname, String apssword){
+        SQLiteDatabase database  =this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USER_NAME,uname);
+        contentValues.put(USER_PASSWORD,apssword);
+        long response = database.insert(DB_TABLE,null,contentValues);
+        if(response == -1){
+            Toast.makeText(context, "Failed to insert into database", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
     void addBook(DataClass dataClass){
         SQLiteDatabase sd = this.getWritableDatabase();
+
+
         ContentValues cv = new ContentValues();
         cv.put(USER_NAME,dataClass.getName());
         cv.put(USER_PASSWORD,dataClass.getPass());
@@ -56,6 +74,29 @@ public class DBHelper extends SQLiteOpenHelper {
 
         }
     }
+
+    Cursor  reaData(){
+                SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + DB_TABLE;
+        Cursor cursor = null;
+        if(db!=null){
+            cursor = db.rawQuery(query,null);
+        }
+        return  cursor;
+
+    }
+
+//    Cursor readAllData(){
+//        SQLiteDatabase db = this.getReadableDatabase();
+//
+//        Cursor cursor = null;
+//        if(db != null){
+//            cursor = db.rawQuery(query, null);
+//        }
+//        return cursor;
+//    }
+
+
 
     public List<DataClass> getAllData() {
         List<DataClass> list = new ArrayList<>();
@@ -74,6 +115,22 @@ public class DBHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return list;
+    }
+
+    void updateData(DataClass dataClass,String row_id){
+        SQLiteDatabase database  =this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USER_NAME,dataClass.getName());
+        contentValues.put(USER_PASSWORD,dataClass.getPass());
+
+        long res =  database.update(DB_TABLE,contentValues,"_id=?",new String[]{row_id});
+        if (res == -1) {
+            Toast.makeText(context, "Failed to insert data", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show();
+
+        }
+
     }
 
 //    void addBook(String uname, String password) {
